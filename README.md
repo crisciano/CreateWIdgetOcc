@@ -2,10 +2,10 @@
 
 Create wizard widget Oracle Commerce Cloud.
 
-# Overvill
+# Overview
 Create structure, create files, zip widget but delete dir.
 
-## Install Dependencesclear
+## Install Dependences
 
 ~~~javascript
 npm install
