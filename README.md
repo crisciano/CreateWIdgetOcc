@@ -18,7 +18,7 @@ npm start
 
 * Create zip automatic
 
-# V 1.2.3
+# V 1.2.0
 
 * Question de languagens
 * Create languagens automatic

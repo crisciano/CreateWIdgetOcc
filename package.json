@@ -1,7 +1,7 @@
 {
   "name": "robo-teste",
-  "version": "1.0.3",
-  "description": "Robo de teste com javascript",
+  "version": "1.2.0",
+  "description": "Robot create widget Occ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
