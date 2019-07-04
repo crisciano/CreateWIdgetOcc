@@ -2,7 +2,7 @@ let createHTML = require('create-html');
 let fs = require('fs');
 
 async function robot(content){
-	var projectName = content.nameProject;
+	var projectName = content.nameWidget;
 
 	async function createPage(){
 		var fileContent = createHTML({

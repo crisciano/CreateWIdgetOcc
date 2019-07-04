@@ -2,7 +2,7 @@
 
 async function robot(content){
 
-  var projectName = content.nameProject;
+  var projectName = content.nameWidget;
   var base = content.base;
   var pages = [];
   var extFile = 'ext.json';
@@ -19,11 +19,11 @@ async function robot(content){
   languages.map(language=>{
     eTranslations.push({
       "language": language, 
-      "name": `${content.nameProject}`,
+      "name": `${content.nameWidget}`,
       "description": `${content.description}`})
     wTranslations.push({ 
       "language": language, 
-      "name": `${content.nameProject}`})
+      "name": `${content.nameWidget}`})
   })
 
   var extJson = {

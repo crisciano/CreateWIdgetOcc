@@ -1,35 +1,31 @@
 let readline = require('readline-sync');
 let Prompt = require('prompt-checkbox');
 let inquirer = require('inquirer');
-
-// const question = [
-// 	'Nome do projeto? ',
-// 	'Quantas paginas? ',
-// 	'qual o titulo da pagina? '
-// ]
+var utf8 = require('utf8');
 
 async function robot(content){
 	var question = content.questions.question;
-	// content.teste = await setTeste();
-	content.nameProject = setNameProject();
+	var languages;
+	
+	content.nameWidget = setNameProject();
 	content.extensionID = setExtension();
 	content.description = setDescription();
-	var languages = setLanguages();
+	languages = setLanguages();
 
-	if(languages)
-		content.language = languages.split(',');
+	if(languages) content.language = languages.split(',');
 
 	function setNameProject(){
-		return readline.question(question[0]);
-	}
-	
-	function setExtension(){
-		return readline.question(question[2]);
+		return readline.question(question[0] );
 	}
 
 	function setDescription(){
-		return readline.question(question[1]);
+		return readline.question( question[1] );
 	}
+	
+	function setExtension(){
+		return readline.question( question[2]);
+	}
+
 	function setLanguages(){
 		return readline.question(`${question[3]}(${content.language}) `)
 	}

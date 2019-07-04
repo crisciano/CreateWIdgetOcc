@@ -2,7 +2,7 @@ let createDir = require('create-dir')
 
 async function robot(content){
 
-	var projectName = content.nameProject;
+	var projectName = content.nameWidget;
 	var subDir = content.structuredDir.widget;
 	var language = content.language;
 	content.base = projectName;

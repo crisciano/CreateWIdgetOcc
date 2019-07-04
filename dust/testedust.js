@@ -14,11 +14,11 @@ var data = getDate();
 languages.map(language=>{
   eTranslations.push({
     "language": language, 
-    "name": `${content.nameProject}`,
+    "name": `${content.nameWidget}`,
     "description": `${content.description}`})
   wTranslations.push({ 
     "language": language, 
-    "name": `${content.nameProject}`})
+    "name": `${content.nameWidget}`})
 })
 
 console.log(eTranslations);
