@@ -10,7 +10,7 @@ let robots = {
 const content = require("./conf/content").content
 
 async function start(){
-	robots.welcome();
+	robots.welcome(content);
 	await robots.question(content);
 	await robots.dir(content);
 	await robots.confPages(content);

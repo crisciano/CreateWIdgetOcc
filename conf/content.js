@@ -1,4 +1,5 @@
 exports.content = {
+	'dev': 'Crisciano S. Botelho',
 	'nameWidget': 'widgetExample',
 	'structuredDir' : { 
 		"widget" : [ 'js', 'less', 'locales', 'templates' ]
