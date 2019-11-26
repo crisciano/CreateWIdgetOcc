@@ -3,11 +3,17 @@ let createDir = require('create-dir')
 async function robot(content){
 
 	var projectName = content.nameWidget;
-	var subDir = content.structuredDir.widget;
+	let subDir;
+
+	if(content.typeWidget == 0)
+		subDir = content.widget;
+	else
+		subDir = content.custom;
+
 	var language = content.language;
 	content.base = projectName;
-	// var base = `${ projectName }/${Object.keys(content.structuredDir)}`;
-	var base = `${content.base}/${Object.keys(content.structuredDir)}`;
+	
+	var base = `${content.base}/widget`;
 
 	await createDir(base);
 	console.log(`Created project -> ${base}`);

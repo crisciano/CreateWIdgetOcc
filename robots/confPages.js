@@ -1,4 +1,4 @@
-
+let { Helper } = require('../helpers/helper')
 
 async function robot(content){
 
@@ -31,7 +31,7 @@ async function robot(content){
     "developerID": "crisciano.botelho",
     "createdBy"  : "Compasso",
     "version"    : 1,
-    "timeCreated": getDate(),
+    "timeCreated": Helper.getDate(),
     "translations": eTranslations
   };
   var ext = JSON.stringify(extJson, null, 4);
@@ -136,15 +136,6 @@ async function robot(content){
 
   content.pages = pages;
 
-  function getDate(){
-    var d = new Date();
-    var year = d.getFullYear();
-    var month = String(d.getMonth() + 1).padStart(2, '0');
-    var day = String(d.getDate()).padStart(2, '0'); 
-
-    return `${year}-${month}-${day}`;
-  }
-  
 }
 
 module.exports = robot

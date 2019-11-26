@@ -1,22 +1,8 @@
-let createHTML = require('create-html');
 let fs = require('fs');
 
 async function robot(content){
-	var projectName = content.nameWidget;
 
 	async function createPage(){
-		var fileContent = createHTML({
-		  title: content.title,
-		  script: 'example.js',
-		  scriptAsync: true,
-		  css: 'example.css',
-		  lang: 'en',
-		  dir: 'rtl',
-		  head: '<meta name="description" content="example">',
-		  body: '<p>example</p>',
-		  favicon: 'favicon.png'
-		})
-
 		await content.pages.map( page =>{
 			createFile(page.extFile, page.extContent, page.extPath)
 		})
@@ -32,6 +18,5 @@ async function robot(content){
 	await createPage();
 	
 }
-
 
 module.exports = robot

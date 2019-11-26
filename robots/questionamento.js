@@ -1,34 +1,41 @@
 let readline = require('readline-sync');
-let Prompt = require('prompt-checkbox');
-let inquirer = require('inquirer');
-var utf8 = require('utf8');
 
 async function robot(content){
-	var question = content.questions.question;
-	var languages;
+	var questions = content.questions;
 	
-	content.nameWidget = setNameProject();
-	content.extensionID = setExtension();
-	content.description = setDescription();
-	languages = setLanguages();
-
-	if(languages) content.language = languages.split(',');
-
-	function setNameProject(){
-		return readline.question(question[0] );
-	}
-
-	function setDescription(){
-		return readline.question( question[1] );
-	}
+	questions.forEach(question => {
+		if(question.key === 'languages'){
+			var languages = readline.question(question.value)
+			if(languages) content.language = languages.split(',');
+		}else{
+			content[`${question.key}`] = readline.question(question.value)
+		}
+	});
 	
-	function setExtension(){
-		return readline.question( question[2]);
-	}
 
-	function setLanguages(){
-		return readline.question(`${question[3]}(${content.language}) `)
-	}
+	
+
+	// content.nameWidget = setNameProject();
+	// content.extensionID = setExtension();
+	// content.description = setDescription();
+	// languages = setLanguages();
+
+
+	// function setNameProject(){
+	// 	return readline.question(question[0] );
+	// }
+
+	// function setDescription(){
+	// 	return readline.question( question[1] );
+	// }
+	
+	// function setExtension(){
+	// 	return readline.question( question[2]);
+	// }
+
+	// function setLanguages(){
+	// 	return readline.question(`${question[3]}(${content.language}) `)
+	// }
 
 }
 
