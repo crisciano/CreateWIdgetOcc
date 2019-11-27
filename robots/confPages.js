@@ -60,30 +60,31 @@ async function robot(content){
   var ns = JSON.stringify(nsJson, null, 4);
 
   var less = `
-  .headerLineTop {
-      background: #fff;
-  }`;
+    .headerLineTop {
+        background: #fff;
+    }
+  `;
 
   var script =`
-  define(
-    // Dependencies
-    ['jquery', 'knockout'],
+    define(
+      // Dependencies
+      ['jquery', 'knockout'],
 
-    // Module Implementation
-    function($,ko) {
-        // We recommend enabling strict checking mode
-        'use strict';
+      // Module Implementation
+      function($,ko) {
+          // We recommend enabling strict checking mode
+          'use strict';
 
-        return {
-            onLoad: function(widget) {
-                console.log('Carregando widget base...');
-            },
-            beforeAppear: function(page) {
-              // Code to run before showing the widget here.
-            }
-        }
-    }
-  );
+          return {
+              onLoad: function(widget) {
+                  console.log('Carregando widget base...');
+              },
+              beforeAppear: function(page) {
+                // Code to run before showing the widget here.
+              }
+          }
+      }
+    );
   `;
 
   var template = `
