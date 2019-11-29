@@ -20,12 +20,12 @@ async function robot(content){
 	// pasta com nome do widget
 	await createDir(`${base}/${projectName}`);
 	// create subdir in widgets
-	await subDir.map((item) => {
+	await subDir.forEach((item) => {
 		createDir(`${base}/${projectName}/${item}`);
 		console.log(`Created subDir -> ${base}/${item}`);
 	})
 	// create language
-	await language.map((item)=>{
+	await language.forEach((item)=>{
 		createDir(`${base}/${projectName}/locales/${item}`);
 		console.log(`Created language -> ${base}/${projectName}/locales/${item}`);
 	})
