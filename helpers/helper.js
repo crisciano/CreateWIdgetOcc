@@ -10,7 +10,19 @@ class Helper {
     return `${year}-${month}-${day}`;
   }
 
-  getFileExt(content, eTranslations){
+  getFileExt(content){
+
+    var eTranslations = [];
+
+    content.languages.forEach(language=>{
+      
+      // ext translate
+      eTranslations.push({
+        "language": language, 
+        "name": `${content.nameWidget}`,
+        "description": `${content.description}`})
+    })
+
     var extJson = {
       "extensionID": content.extensionID,
       "developerID": "crisciano.botelho",
@@ -22,7 +34,17 @@ class Helper {
     return JSON.stringify(extJson, null, 4);
   }
 
-  getFileWidget(wTranslations){
+  getFileWidget(content){
+    var wTranslations = [];
+
+    content.languages.forEach(language=>{
+
+      // widget translate
+      wTranslations.push({ 
+        "language": language, 
+        "name": `${content.nameWidget}`})
+    })
+
     var widgetJson = {
       "availableToAllPages": true,
       "config": {},
@@ -37,14 +59,35 @@ class Helper {
       "version": 1,
       "translations" : wTranslations
     };
+    if(content.typeWidget == 1){
+      delete widgetJson['i18nresources'];
+      delete widgetJson['javascript'];
+    }
     return JSON.stringify(widgetJson, null, 4);
   }
 
-  getFileNs() {
+  getFileConfig(content){
+
+    var widgetConfig = {
+        "widgetDescriptorName": `${content.nameWidget}`,
+        "properties": content.props
+    }
+
+    return JSON.stringify(widgetConfig, null, 4);
+
+  }
+
+  getFileNs(content) {
+    let res = {};
+    if(content.props.length){
+      content.props.forEach( prop => {
+        res[`${prop.name}Label`] = prop.label,
+        res[`${prop.name}Help`] = prop.help
+      })
+    }
+
     var nsJson = {
-      "resources": {
-          "newResource" : "new resource"
-      }
+      "resources": res
     };
     return JSON.stringify(nsJson, null, 4);
   }
@@ -94,7 +137,7 @@ class Helper {
 
     let fileContent;
 
-    var languages = content.language;
+    var languages = content.languages;
 
     var eTranslations = [];
     var wTranslations = [];
@@ -114,15 +157,18 @@ class Helper {
     })
 
     if(file == "ext")
-      fileContent = this.getFileExt(content, eTranslations)
+      fileContent = this.getFileExt(content)
     else if(file == "widget")
-      fileContent = this.getFileWidget(wTranslations)
+      fileContent = this.getFileWidget(content)
+      // fileContent = this.getFileWidget(wTranslations)
     else if(file == "ns")
-      fileContent = this.getFileNs()
+      fileContent = this.getFileNs(content)
     else if(file == "less")
       fileContent = this.getFileLess()
     else if(file == "script")
       fileContent = this.getFileScript()
+    else if(file == "config")
+      fileContent = this.getFileConfig(content)
     else if(file == "template")
       fileContent = this.getFileTemplate()
 
@@ -146,6 +192,24 @@ class Helper {
 			obj[`${question.key}`] = readline.question( question.value)
     })
     return obj
+  }
+
+  getDiretories(content){
+    let dir;
+    content.typeWidget == 0 ? dir = content.widget: dir = content.custom;
+    return dir
+  }
+
+  getFiles(content){
+    let files; 
+    content.typeWidget == 0 ? files = content.files.basic : files = content.files.custom
+    files = this.includeOldFiles(files, content.oldFiles)
+    return files
+  }
+
+  includeOldFiles(files, oldFiles) {
+    oldFiles.forEach( file => files.push(file))
+    return files
   }
 
 }

@@ -6,15 +6,15 @@ exports.content = {
 	"files": {
 		"custom": [
 			{
-				"extPath" : "{base}\\ext.json",
+				"extPath" : "{base}\\",
 				"extFile" : "ext.json",
 				"extContent" :"ext"
 			},{
-				"extPath" : "{base}\\widget\\{projectName}\\widget.json",
+				"extPath" : "{base}\\widget\\{projectName}\\",
 				"extFile" : "widget.json",
 				"extContent" :"widget"
 			},{
-				"extPath" : "{base}\\widget\\{projectName}\\config\\config.json",
+				"extPath" : "{base}\\widget\\{projectName}\\config\\",
 				"extFile" : "config.json",
 				"extContent" :"config"
 			}
@@ -54,14 +54,14 @@ exports.content = {
 		6: "sectionTitleType",
 		7: "collectionType"
 	},
-	'language': [ 'en', 'pt_BR' ],
+	'languages': [ 'en', 'pt_BR' ],
 	'questions': {
 		"basic": [
 			{ key: "typeWidget", value: "Tipo de widget? (0 - Basic, 1 - Custom) "},
 			{ key: "nameWidget", value: "Nome do widget? (widgetExample) "},
 			{ key: "description", value: "Descricao curta do widget? "},
 			{ key: "extensionID", value: "Id gerada para o widget? (extensionID) "},
-			{ key: "languages", value: "Quais languagens serao usadas? "},
+			{ key: "languages", value: "Quais languagens serao usadas? ( en,pt ) "},
 		],
 		"stringType" : [
 			{ key: "required", value: "E uma propriedade obrigatoria (s/n): "},
@@ -70,11 +70,12 @@ exports.content = {
 			{ key: "pattern", value: "Regex pattern (opcional): "},
 		],
 		"booleanType" : [
-			{ key: "defaultValue", value: "Valor default (opcional): "},
+			{ key: "defaultValue", value: "Valor default (s/n): "},
 		],
 		"basicProps": [
-			{ key: "name" , value: "Nome identificador da propriedade (active): "},
-			{ key: "label", value: "Texto descritivo: "}
+			{ key: "name" , value: "Id da propriedade (active): "},
+			{ key: "label", value: "Label da propriedade: "},
+			{ key: "help", value: "Texto de ajuda: "}
 		]
 	}
 	

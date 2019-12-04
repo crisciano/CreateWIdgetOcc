@@ -14,17 +14,15 @@ async function robot(content){
 	});
 
 	if(content.typeWidget == 1){
-
 		while(1){
 			let obj = basicQuestionsProps(content)
 
 			condition = readline.question("Deseja incluir mais propriedades customizadas (s/n)? ")
-
+			
+			content.props.push(obj)
+			console.log(content.props);
 			if(condition == 'n'){
-				process.exit(0)
-			}else{
-				content.props.push(obj)
-				console.log(content.props);
+				break;
 			}
 		}
 	}
@@ -55,7 +53,6 @@ async function robot(content){
 		if(tipo == 1){
 			// obj = questionStringType(obj, content)
 			obj = getQuestionsObj(obj, content.questions.stringType)
-			// obj.id = obj.name
 		}else if(tipo == 2){
 			// obj = questionBooleanType(obj,content)
 			obj = getQuestionsObj(obj, content.questions.booleanType)
@@ -66,23 +63,19 @@ async function robot(content){
 		return obj
 	}
 
-	// function questionStringType(obj, content){
-	// 	obj.id = obj.name
-
-	// 	getQuestionsObj(obj, content.questions.stringType)
-	// 	return obj
-	// }
-
-	// function questionBooleanType(obj, content){
-	// 	getQuestionsObj(obj, content.questions.booleanType)
-	// 	return obj
-	// }
-
 	function getQuestionsObj(obj, questions){
     questions.forEach(question => {
 			obj[`${question.key}`] = readline.question( question.value)
 		})
+		console.log(obj.type);
+		if( obj.type == "stringType"){
+			obj.defaultValue = obj.defaultValue === "s" ? true: false  
+		}
 		obj.id = obj.name
+		obj.helpTextResourceId =  obj.name +"Help";
+		obj.labelResourceId = obj.name + "Label";
+		delete obj.label
+		delete obj.help
     return obj
 	}
 

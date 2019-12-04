@@ -1,14 +1,19 @@
 async function robot(content){
-
-  var languages = content.language;
-
-  await languages.forEach((item)=>{
-    // return paste
-    content.oldFiles.push({
-      "extPath": `{base}\\widget\\{projectName}\\locales\\${item}\\ns.headerLineTop.json`,
-      "extFile": `ns.headerLineTop.json`,
-      "extContent": `ns`
-    })
+  await content.languages.forEach((language)=>{
+    
+    if(content.typeWidget == 0){
+      content.oldFiles.push({
+        "extPath": `{base}\\widget\\{projectName}\\locales\\${language}\\`,
+        "extFile": `ns.headerLineTop.json`,
+        "extContent": `ns`
+      })
+    }else {
+      content.oldFiles.push({
+        "extPath": `{base}\\widget\\{projectName}\\config\\locales\\`,
+        "extFile": `${language}.json`,
+        "extContent": `ns`
+      })
+    }
   })
 }
 

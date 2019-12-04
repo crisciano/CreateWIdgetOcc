@@ -4,12 +4,8 @@ let { Helper } = require('../helpers/helper')
 async function robot(content){
 
 	async function createPage(){
-		let files;
-		if(content.typeWidget == 0)
-			files = content.files.basic
-		else
-			files = content.files.custom
-
+		let files = Helper.getFiles(content)
+		
 		await files.forEach( file =>{
 			let fileContent = Helper.getFileContent(file.extContent, content)
 			let filePath = Helper.resolvePath(file.extPath, content)

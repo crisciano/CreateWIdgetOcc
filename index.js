@@ -4,7 +4,8 @@ let robots = {
 	question: 	require('./robots/questionamento.js'),
 	confPages: 	require('./robots/confPages.js'),
 	pages: 		require('./robots/pages.js'),
-	zipWidget: 	require('./robots/zipWidget.js')
+	zipWidget: 	require('./robots/zipWidget.js'),
+	generateWidget: require('./robots/generateWidget')
 }
 
 const content = require("./conf/content").content
@@ -12,10 +13,11 @@ const content = require("./conf/content").content
 async function start(){
 	robots.welcome(content);
 	await robots.question(content);
-	await robots.dir(content);
-	await robots.confPages(content);
-	await robots.pages(content);
-	await robots.zipWidget(content);
+	await robots.generateWidget(content);
+	// await robots.dir(content);
+	// await robots.confPages(content);
+	// await robots.pages(content);
+	// await robots.zipWidget(content);
 }
 
 start();
